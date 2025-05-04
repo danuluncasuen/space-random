@@ -5,14 +5,11 @@
     <title>Simple Go API</title>
 </head>
 <body>
-    <h1>Messages</h1>
+    <h1>Random Number</h1>
     <ul id="messages"></ul>
 
-    <input type="text" id="newMsg" placeholder="Add message">
-    <button onclick="addMessage()">Send</button>
-
     <script>
-        async function loadMessages() {
+        async function getRandom() {
             const res = await fetch('/api/messages');
             const msgs = await res.json();
             const list = document.getElementById('messages');
@@ -24,7 +21,7 @@
             });
         }
 
-        async function addMessage() {
+        async function setLimit() {
             const input = document.getElementById('newMsg');
             const msg = input.value;
             await fetch('/api/messages', {
@@ -33,10 +30,10 @@
                 body: JSON.stringify(msg)
             });
             input.value = '';
-            loadMessages();
+            getRandom();
         }
 
-        loadMessages();
+        getRandom();
     </script>
 </body>
 </html>

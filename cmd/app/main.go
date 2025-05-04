@@ -10,7 +10,7 @@ func main() {
     mux := http.NewServeMux()
 
     // API routes
-    mux.HandleFunc("/api/messages", handler.MessagesHandler)
+    mux.HandleFunc("/api/random", handler.RandomHandler)
 
     // Static file serving
     fs := http.FileServer(http.Dir("static"))
